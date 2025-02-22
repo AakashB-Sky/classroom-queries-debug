@@ -4,6 +4,7 @@
 
 <hr>
 
+<!-- form to create course -->
 <form action="/insert_course" method="post">
   <div>
     <label for="title_box">Title</label>
@@ -34,6 +35,7 @@
 
 <hr>
 
+<!-- table of courses -->
 <table class="table" border="1">
   <tr>
     <th>
@@ -56,7 +58,7 @@
     </th>
   </tr>
 
-  <% @course.each do |course| %>
+  <% @courses.each do |course| %>
     <tr>
       <td>
         <%= course.id %>
@@ -71,12 +73,12 @@
       </td>
 
       <td>
-        <% department = department.where({ :id => course.department_id }).at(0) %>
+        <% department = Department.where({ :id => course.department_id }).at(0) %>
         <a href="/departments/<%= department.id %>"><%= department.name %></a>
       </td>
 
       <td>
-        <a href="/courses/<%= @course.id %>">
+        <a href="/courses/<%= course.id %>">
           Show details
         </a>
       </td>
