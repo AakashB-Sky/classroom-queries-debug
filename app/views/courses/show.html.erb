@@ -1,5 +1,5 @@
 <h1>
-  Course #<%= course.id %> details
+  Course #<%= @course.id %> details
 </h1>
 
 <div>
@@ -8,6 +8,7 @@
   </a>
 </div>
 
+<!-- delete course -->
 <div>
   <a href="/delete_course/<%= @course.id %>">
     Delete course
@@ -16,6 +17,7 @@
 
 <hr>
 
+<!-- update course -->
 <form action="/modify_course/<%= @course.id %>" method="post">
   <div>
     <label for="title_box">
@@ -60,12 +62,13 @@
 
 <hr>
 
+<!-- course information -->
 <dl>
   <dt>
     Title
   </dt>
   <dd>
-    <%= course.title %>
+    <%= @course.title %>
   </dd>
 
   <dt>
@@ -87,12 +90,13 @@
     Number of enrolled students
   </dt>
   <dd>
-    <%= enrollment.where({ :course_id => @course.id }) %>
+    <%= Enrollment.where({ :course_id => @course.id }).count %>
   </dd>
 </dl>
 
 <hr>
 
+<!-- course roster -->
 <h2>Roster</h2>
 <ul>
   <% Enrollment.where({ :course_id => @course.id }).each do |enrollment| %>
