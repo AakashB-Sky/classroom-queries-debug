@@ -4,6 +4,7 @@
 
 <hr>
 
+<!-- form to create student -->
 <form action="/insert_student" method="post">
   <div>
     <label for="email_box">
@@ -36,6 +37,7 @@
 
 <hr>
 
+<!-- table of students -->
 <table class="table" border="1" >
   <tr>
     <th>
@@ -58,7 +60,7 @@
     </th>
   </tr>
 
-  <% @students.eac do |student| %>
+  <% @students.each do |student| %>
     <tr>
       <td>
         <%= student.id %>
